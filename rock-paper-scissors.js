@@ -19,3 +19,15 @@ function getComputerChoice() {
             return "scissors";
     }
 }
+
+/*
+    FUNCTION:
+        getHumanChoice
+    DESCRIPTION:
+        Get and return the human player's choice from "rock", "paper", or "scissors".
+*/
+function getHumanChoice() {
+    const humanChoice = prompt("Please type your choice: 'rock', 'paper', or 'scissors'");
+
+    return humanChoice;
+}
