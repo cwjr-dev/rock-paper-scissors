@@ -1,1 +1,2 @@
-# rock-paper-scissors
+# Rock Paper Scissors
+This project is a console-based implementation of Rock Paper Scissors, built as part of [The Odin Project: Rock Paper Scissors from the Foundations Course](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). The goal of this project is to practice planning and developing game logic in JavaScript, focusing on clean, functional code.
