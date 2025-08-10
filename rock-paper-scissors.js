@@ -42,13 +42,12 @@ function capitalizeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-
 /*
     FUNCTION:
         playGame
     DESCRIPTION:
         Calls playRound to play five games of Rock Paper Scissors. At the end of the five
-        rounds, it declares a winner.
+        rounds, it displays the end of the game results.
 */
 function playGame() {
     const MAX_ROUND = 5;
@@ -57,8 +56,13 @@ function playGame() {
 
     // play five rounds
     for (let round = 0; round < MAX_ROUND; round++) {
+        console.log(`Round ${round + 1} of 5`)
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+        console.log(`Human ${humanScore} | Computer ${computerScore}`);
+        console.log("\n");
     }
 
     /*
@@ -76,19 +80,34 @@ function playGame() {
         // determine round winner
             // draw game
         if (humanChoice === computerChoice) {
-            console.log(`Draw! Both players chose ${capitalizeFirstLetter(humanSelection)}`);
+            console.log(`Draw! Both players chose ${capitalizeFirstLetter(humanChoice)}`);
         }
         else if (winCombination.includes(roundSelection)) {
             // human wins
-            console.log(`You win! ${capitalizeFirstLetter(humanSelection)} beats ${capitalizeFirstLetter(computerSelection)}`);
+            console.log(`You win! ${capitalizeFirstLetter(humanChoice)} beats ${capitalizeFirstLetter(computerChoice)}`);
             humanScore++;
         }
         else {
             // computer wins
-            console.log(`You Lose! ${capitalizeFirstLetter(computerSelection)} beats ${capitalizeFirstLetter(humanSelection)}`);
+            console.log(`You Lose! ${capitalizeFirstLetter(computerChoice)} beats ${capitalizeFirstLetter(humanChoice)}`);
             computerScore++;
         }   
     }
+
+    // display end game results
+    console.log("Game Over")
+
+    if (humanScore === computerScore) {
+        console.log("Tie Game!");
+    }
+    else if (humanScore > computerScore) {
+        console.log("Human Wins!");
+    }
+    else {
+        console.log("Computer Wins!");
+    }
+
+    console.log(`Final Score - Human ${humanScore} | Computer ${computerScore}`);
 }
 
-playRound(humanSelection, computerSelection);
+playGame();
