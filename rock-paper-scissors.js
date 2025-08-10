@@ -53,18 +53,28 @@ function playRound(humanChoice, computerChoice) {
     // determine round winner
         // draw game
     if (humanChoice === computerChoice) {
-        console.log(`Draw! Both players chose ${humanChoice}`);
+        console.log(`Draw! Both players chose ${capitalizeFirstLetter(humanSelection)}`);
     }
     else if (winCombination.includes(roundSelection)) {
         // human wins
-        console.log(`You win! ${humanSelection} beats ${computerSelection}`);
+        console.log(`You win! ${capitalizeFirstLetter(humanSelection)} beats ${capitalizeFirstLetter(computerSelection)}`);
         humanScore++;
     }
     else {
         // computer wins
-        console.log(`You Lose! ${computerSelection} beats ${humanSelection}`);
+        console.log(`You Lose! ${capitalizeFirstLetter(computerSelection)} beats ${capitalizeFirstLetter(humanSelection)}`);
         computerScore++;
     }   
 } 
+
+/*
+    FUNCTION:
+        capitalizeFirstLetter
+    DESCRIPTION:
+        Capitalizes the first letter of a word
+*/
+function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
 
 playRound(humanSelection, computerSelection);
