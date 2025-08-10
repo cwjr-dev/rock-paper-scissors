@@ -32,41 +32,6 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-/*
-    FUNCTION:
-        playRound
-    DESCRIPTION:
-        Plays a single round of Rock Paper Scissors and displays the round result
-*/
-function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
-
-    const roundSelection = `${humanChoice}-${computerChoice}`;
-    const winCombination = "rock-scissors paper-rock scissors-paper";    
-
-    // determine round winner
-        // draw game
-    if (humanChoice === computerChoice) {
-        console.log(`Draw! Both players chose ${capitalizeFirstLetter(humanSelection)}`);
-    }
-    else if (winCombination.includes(roundSelection)) {
-        // human wins
-        console.log(`You win! ${capitalizeFirstLetter(humanSelection)} beats ${capitalizeFirstLetter(computerSelection)}`);
-        humanScore++;
-    }
-    else {
-        // computer wins
-        console.log(`You Lose! ${capitalizeFirstLetter(computerSelection)} beats ${capitalizeFirstLetter(humanSelection)}`);
-        computerScore++;
-    }   
-} 
-
 /*
     FUNCTION:
         capitalizeFirstLetter
@@ -75,6 +40,55 @@ function playRound(humanChoice, computerChoice) {
 */
 function capitalizeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+
+/*
+    FUNCTION:
+        playGame
+    DESCRIPTION:
+        Calls playRound to play five games of Rock Paper Scissors. At the end of the five
+        rounds, it declares a winner.
+*/
+function playGame() {
+    const MAX_ROUND = 5;
+    let humanScore = 0;
+    let computerScore = 0;
+
+    // play five rounds
+    for (let round = 0; round < MAX_ROUND; round++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+    }
+
+    /*
+    FUNCTION:
+        playRound
+    DESCRIPTION:
+        Plays a single round of Rock Paper Scissors and displays the round result
+    */
+    function playRound(humanChoice, computerChoice) {
+        humanChoice = humanChoice.toLowerCase();
+
+        const roundSelection = `${humanChoice}-${computerChoice}`;
+        const winCombination = "rock-scissors paper-rock scissors-paper";    
+
+        // determine round winner
+            // draw game
+        if (humanChoice === computerChoice) {
+            console.log(`Draw! Both players chose ${capitalizeFirstLetter(humanSelection)}`);
+        }
+        else if (winCombination.includes(roundSelection)) {
+            // human wins
+            console.log(`You win! ${capitalizeFirstLetter(humanSelection)} beats ${capitalizeFirstLetter(computerSelection)}`);
+            humanScore++;
+        }
+        else {
+            // computer wins
+            console.log(`You Lose! ${capitalizeFirstLetter(computerSelection)} beats ${capitalizeFirstLetter(humanSelection)}`);
+            computerScore++;
+        }   
+    }
 }
 
 playRound(humanSelection, computerSelection);
