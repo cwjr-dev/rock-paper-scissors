@@ -49,22 +49,10 @@ function capitalizeFirstLetter(word) {
         Calls playRound to play five games of Rock Paper Scissors. At the end of the five
         rounds, it displays the end of the game results.
 */
-function playGame() {
-    const MAX_ROUND = 5;
+function playGame() {    
     let humanScore = 0;
     let computerScore = 0;
-
-    // play five rounds
-    for (let round = 0; round < MAX_ROUND; round++) {
-        console.log(`Round ${round + 1} of 5`)
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-        console.log(`Human ${humanScore} | Computer ${computerScore}`);
-        console.log("\n");
-    }
-
+    
     /*
     FUNCTION:
         playRound
