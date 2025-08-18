@@ -20,11 +20,13 @@ function gameController() {
     });
 }
 
+gameController();
+
+
 // display the winner of the game after a player scores five points
 function gameOver() {
 }
 
-gameController();
 
 /*
     FUNCTION: 
@@ -52,31 +54,29 @@ function getComputerChoice() {
     DESCRIPTION:
         Plays a single round of Rock Paper Scissors and displays the round result
     */
-    function playRound(humanChoice) {
-        const computerChoice = getComputerChoice();
-        const roundSelection = `${humanChoice}-${computerChoice}`;
+    function playRound(human, computer) {        
+        const roundSelection = `${human.choice}-${computer.choice}`;
         const winCombination = "rock-scissors paper-rock scissors-paper";
 
         // display the players' selection
-        humanSelectionDisplay.textContent = `Human chose ${humanChoice}`;
-        ComputerSelectionDisplay.textContent = `Computer chose ${computerChoice}`;
+        humanSelectionDisplay.textContent = `Human chose ${human.choice}`;
+        ComputerSelectionDisplay.textContent = `Computer chose ${computer.choice}`;
 
         // determine round winner
             // draw game
-        if (humanChoice === computerChoice) {
-
+        if (human.choice === computer.choice) {
             roundDisplay.textContent = `DRAW!`;
         }
         else if (winCombination.includes(roundSelection)) {
             // human wins
-            ++humanScore;
-            humanSelectionDisplay.textContent = humanScore;
+            ++human.score;
+            humanScoreDisplay.textContent = human.score;
             roundDisplay.textContent = `YOU WIN!`;
         }
         else {
             // computer wins
-            ++computerScore;
-            ComputerScoreDisplay.textContent = computerScore;
-            roundDisplay.textContent = `YOU LOSE!`;            
+            ++computer.score;
+            ComputerScoreDisplay.textContent = computer.score;
+            roundDisplay.textContent = `YOU LOSE!`;
         }   
     }
