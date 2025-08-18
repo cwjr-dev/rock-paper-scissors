@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.rps-container {
+    
+    border-radius: 5px;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #F5F5F5;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.score-container {    
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-display {
+    text-align: center;    
+}
+
+.selection-container {    
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+button {    
+    padding: 10px 20px;
+}
+
+.selection-display-container {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+footer {
+    display: flex;
+    gap: 10px;    
+}
+
+.round-display {
+    flex: 1;
+    border: 5px double black;    
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
