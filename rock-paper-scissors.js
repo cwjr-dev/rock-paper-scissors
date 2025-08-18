@@ -1,5 +1,31 @@
 "use strict";
 
+const gameOptions = document.querySelector(".selection-container");
+const humanSelectionDisplay = document.querySelector(".player-selection");
+const ComputerSelectionDisplay = document.querySelector(".computer-selection");
+const humanScoreDisplay = document.querySelector(".player-score");
+const ComputerScoreDisplay = document.querySelector(".computer-score");
+const roundDisplay = document.querySelector(".round-display");
+
+
+function gameController() {
+    const MAX_SCORE = 5;
+    const human = {score: 0, choice: ""};
+    const computer = {score: 0, choice: ""};
+
+    gameOptions.addEventListener("click", event => {        
+        human.choice = event.target.id;
+        computer.choice = getComputerChoice();
+        playRound(human, computer);
+    });
+}
+
+// display the winner of the game after a player scores five points
+function gameOver() {
+}
+
+gameController();
+
 /*
     FUNCTION: 
         getComputerChoice
@@ -20,82 +46,37 @@ function getComputerChoice() {
     }
 }
 
-/*
-    FUNCTION:
-        getHumanChoice
-    DESCRIPTION:
-        Get and return the human player's choice from "rock", "paper", or "scissors".
-*/
-function getHumanChoice() {
-    const humanChoice = prompt("Please type your choice: 'rock', 'paper', or 'scissors'");
-
-    return humanChoice;
-}
-
-/*
-    FUNCTION:
-        capitalizeFirstLetter
-    DESCRIPTION:
-        Capitalizes the first letter of a word
-*/
-function capitalizeFirstLetter(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-}
-
-/*
-    FUNCTION:
-        playGame
-    DESCRIPTION:
-        Calls playRound to play five games of Rock Paper Scissors. At the end of the five
-        rounds, it displays the end of the game results.
-*/
-function playGame() {    
-    let humanScore = 0;
-    let computerScore = 0;
-    
-    /*
+ /*
     FUNCTION:
         playRound
     DESCRIPTION:
         Plays a single round of Rock Paper Scissors and displays the round result
     */
-    function playRound(humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLowerCase();
-
+    function playRound(humanChoice) {
+        const computerChoice = getComputerChoice();
         const roundSelection = `${humanChoice}-${computerChoice}`;
-        const winCombination = "rock-scissors paper-rock scissors-paper";    
+        const winCombination = "rock-scissors paper-rock scissors-paper";
+
+        // display the players' selection
+        humanSelectionDisplay.textContent = `Human chose ${humanChoice}`;
+        ComputerSelectionDisplay.textContent = `Computer chose ${computerChoice}`;
 
         // determine round winner
             // draw game
         if (humanChoice === computerChoice) {
-            console.log(`Draw! Both players chose ${capitalizeFirstLetter(humanChoice)}`);
+
+            roundDisplay.textContent = `DRAW!`;
         }
         else if (winCombination.includes(roundSelection)) {
             // human wins
-            console.log(`You win! ${capitalizeFirstLetter(humanChoice)} beats ${capitalizeFirstLetter(computerChoice)}`);
-            humanScore++;
+            ++humanScore;
+            humanSelectionDisplay.textContent = humanScore;
+            roundDisplay.textContent = `YOU WIN!`;
         }
         else {
             // computer wins
-            console.log(`You Lose! ${capitalizeFirstLetter(computerChoice)} beats ${capitalizeFirstLetter(humanChoice)}`);
-            computerScore++;
+            ++computerScore;
+            ComputerScoreDisplay.textContent = computerScore;
+            roundDisplay.textContent = `YOU LOSE!`;            
         }   
     }
-
-    // display end game results
-    console.log("Game Over")
-
-    if (humanScore === computerScore) {
-        console.log("Tie Game!");
-    }
-    else if (humanScore > computerScore) {
-        console.log("Human Wins!");
-    }
-    else {
-        console.log("Computer Wins!");
-    }
-
-    console.log(`Final Score - Human ${humanScore} | Computer ${computerScore}`);
-}
-
-playGame();
