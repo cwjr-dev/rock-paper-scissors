@@ -6,6 +6,7 @@ const ComputerSelectionDisplay = document.querySelector(".computer-selection");
 const humanScoreDisplay = document.querySelector(".player-score");
 const ComputerScoreDisplay = document.querySelector(".computer-score");
 const roundDisplay = document.querySelector(".round-display");
+const resetButton = document.querySelector(".reset");
 
 
 function gameController() {
@@ -17,6 +18,17 @@ function gameController() {
         human.choice = event.target.id;
         computer.choice = getComputerChoice();
         playRound(human, computer);
+    });
+
+    // reset the game
+    resetButton.addEventListener("click", () => {
+        human.score = 0;
+        computer.score = 0;
+        humanScoreDisplay.textContent = human.score;
+        ComputerScoreDisplay.textContent = computer.score;
+        humanSelectionDisplay.textContent = "";
+        ComputerSelectionDisplay.textContent = "";
+        roundDisplay.textContent = "";        
     });
 }
 
