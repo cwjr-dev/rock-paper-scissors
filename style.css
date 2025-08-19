@@ -10,56 +10,88 @@ body {
     font-family: "Roboto", 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;    
+    background-color: #f0f0f0;
 }
 
 .rps-container {
-    
-    border-radius: 5px;
-    padding: 20px 60px;
+    border-radius: 10px;
+    padding: 30px 60px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #F5F5F5;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
 }
 
-.score-container {    
+.score-container {
     display: flex;
     justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #e0e7ff;
+    border-radius: 8px;
 }
 
 .score-display {
-    text-align: center;    
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
 }
 
-.selection-container {    
+.selection-container {
     display: flex;
-    gap: 20px;
-    justify-content: space-evenly;
+    gap: 15px;
+    justify-content: center;
 }
 
 button {    
-    padding: 10px 20px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #66a6ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4d8ae6;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 .selection-display-container {
-    height: 20px;
+    height: 25px;
     margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
 }
 
-footer {
+.results-container {
     display: flex;
     gap: 10px;    
+    justify-content: center;
 }
 
 .round-display {
     flex: 1;
-    border: 5px double black;    
+    border: 3px solid #66a6ff;
+    border-radius: 8px;
     text-align: center;
     height: 50px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    background-color: #e0f0ff;
 }
