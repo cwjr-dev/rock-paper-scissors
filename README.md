@@ -2,7 +2,7 @@
 This project is a console-based implementation of Rock Paper Scissors, built as part of [The Odin Project: Rock Paper Scissors from the Foundations Course](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). The goal of this project is to practice planning and developing game logic in JavaScript, focusing on clean, functional code.
 
 ## Updates
-8/18/2025 - Added a playable UI version of Rock Paper Scissors has been added.
+8/18/2025 - Added a playable UI version of Rock Paper Scissors.
 
 ## How to Play
 1. Open [Rock Paper Scissors](https://cwjr-dev.github.io/rock-paper-scissors/) in your browser
