@@ -2,9 +2,9 @@
 
 const gameOptions = document.querySelector(".selection-container");
 const humanSelectionDisplay = document.querySelector(".player-selection");
-const ComputerSelectionDisplay = document.querySelector(".computer-selection");
+const computerSelectionDisplay = document.querySelector(".computer-selection");
 const humanScoreDisplay = document.querySelector(".player-score");
-const ComputerScoreDisplay = document.querySelector(".computer-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
 const roundDisplay = document.querySelector(".round-display");
 const resetButton = document.querySelector(".reset");
 
@@ -25,42 +25,40 @@ function gameController() {
         human.score = 0;
         computer.score = 0;
         humanScoreDisplay.textContent = human.score;
-        ComputerScoreDisplay.textContent = computer.score;
+        computerScoreDisplay.textContent = computer.score;
         humanSelectionDisplay.textContent = "";
-        ComputerSelectionDisplay.textContent = "";
+        computerSelectionDisplay.textContent = "";
         roundDisplay.textContent = "";        
-    });
-}
+    });    
 
-gameController();
-
-
-// display the winner of the game after a player scores five points
-function gameOver() {
-}
-
-
-/*
+    /*
     FUNCTION: 
         getComputerChoice
     DESCRIPTION: 
         The computer will randomly return one of the following string values:
         "rock", "paper", or "scissors".
-*/
-function getComputerChoice() {
-    const randomChoice = Math.floor(Math.random() * 3);
+    */
+    function getComputerChoice() {
+        const randomChoice = Math.floor(Math.random() * 3);
 
-    switch (randomChoice) {
-        case 0:
-            return "rock";
-        case 1:
-            return "paper";
-        case 2:
-            return "scissors";
+        switch (randomChoice) {
+            case 0:
+                return "rock";
+            case 1:
+                return "paper";
+            case 2:
+                return "scissors";
+        }
     }
-}
 
- /*
+    function checkWinner(player1, player2, MAX_SCORE) {   
+        console.log(player1.score, player2.score);
+        if (player1.score === MAX_SCORE) return player1;
+        if (player2.score === MAX_SCORE) return player2;
+        return null; // no winner
+    }
+
+    /*
     FUNCTION:
         playRound
     DESCRIPTION:
@@ -72,7 +70,7 @@ function getComputerChoice() {
 
         // display the players' selection
         humanSelectionDisplay.textContent = `Human chose ${human.choice}`;
-        ComputerSelectionDisplay.textContent = `Computer chose ${computer.choice}`;
+        computerSelectionDisplay.textContent = `Computer chose ${computer.choice}`;
 
         // determine round winner
             // draw game
@@ -81,14 +79,29 @@ function getComputerChoice() {
         }
         else if (winCombination.includes(roundSelection)) {
             // human wins
-            ++human.score;
+            ++human.score;            
             humanScoreDisplay.textContent = human.score;
-            roundDisplay.textContent = `YOU WIN!`;
+            roundDisplay.textContent = `YOU WIN!`;            
         }
         else {
             // computer wins
             ++computer.score;
-            ComputerScoreDisplay.textContent = computer.score;
+            computerScoreDisplay.textContent = computer.score;
             roundDisplay.textContent = `YOU LOSE!`;
-        }   
+        }
+        
+        // determine if a player has reached five wins        
+        const winner = checkWinner(human, computer, MAX_SCORE);
+
+        if (winner) gameOver(winner);
     }
+}
+
+gameController();
+
+
+
+
+
+
+
